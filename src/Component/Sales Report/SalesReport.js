@@ -3,6 +3,7 @@ import "./SalesReport.css"
 const SalesReport = () => {
   return (
     <>
+    <h1 className='salesReport-Title'>Sales Report</h1>
       <div className="salesReport-dataSearches">
         <div className="salesReport-dataSearch">
           <div className="salesReport-data">
@@ -14,7 +15,7 @@ const SalesReport = () => {
           <button className='searchBtn'>Search</button>
         </div>
       </div>
-      <h1 className='salesReport-Title'>Sales Report</h1>
+      
       <div className="newSale-table">
         <table class="table">
           <thead>
@@ -24,7 +25,7 @@ const SalesReport = () => {
               <th scope="col">Product</th>
               <th scope="col">Quantity</th>
               <th scope="col">Date</th>
-              <th scope="col">Total Amount</th>
+              <th scope="col">Total Amount (Rs)</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -35,35 +36,44 @@ const SalesReport = () => {
               <td>Petrol</td>
               <td>10</td>
               <td>04-03-2023</td>
-              <td>180</td>
+              <td>1800</td>
               <td style={{ fontSize: 20, color: "red" }}>x</td>
             </tr>
             <tr>
-              <td>1001</td>
-              <td>Rijesh</td>
+              <td>1002</td>
+              <td>Anish</td>
               <td>Petrol</td>
               <td>10</td>
               <td>04-03-2023</td>
-              <td>180</td>
+              <td>1800</td>
               <td style={{ fontSize: 20, color: "red" }}>x</td>
             </tr>
             <tr>
-              <td>1001</td>
-              <td>Rijesh</td>
+              <td>1003</td>
+              <td>Aashutsoh</td>
               <td>Petrol</td>
               <td>10</td>
               <td>04-03-2023</td>
-              <td>180</td>
+              <td>1800</td>
               <td style={{ fontSize: 20, color: "red" }}>x</td>
             </tr>
             <tr>
-              <td>1001</td>
-              <td>Rijesh</td>
+              <td>1004</td>
+              <td>Sarjna</td>
               <td>Petrol</td>
               <td>10</td>
               <td>04-03-2023</td>
-              <td>180</td>
+              <td>1800</td>
               <td style={{ fontSize: 20, color: "red" }}>x</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style={{fontWeight:600}}>    Total Amount (Rs):</td>
+              <td>11,200</td>
+              <td></td>
             </tr>
           </tbody>
         </table>

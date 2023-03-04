@@ -56,7 +56,7 @@ const NavBar = () => {
               <NavDropdown.Item as={Link} to="/addproduct">
                 Add Product
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item as={Link} to="/manageproduct">
                 Manage Product
               </NavDropdown.Item>
             </NavDropdown>

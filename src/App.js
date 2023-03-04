@@ -8,7 +8,7 @@ import NewSale from "./Component/NewSale/NewSale";
 import Nav from "./Component/Navbar/Nav";
 import AddProduct from "./Component/AddProduct/AddProduct";
 import SalesReport from "./Component/Sales Report/SalesReport";
-
+import ManageProduct from "./Component/Manage Product/ManageProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ function App() {
           <Route path="/stock" element={<NewSale />} />
           <Route path="/addproduct" element={<AddProduct/>}/>
           <Route path="/salesreport" element={<SalesReport/>}/>
+          <Route path="/manageproduct" element={<ManageProduct/>}/>
         </Routes>
       </div>
     </BrowserRouter>
