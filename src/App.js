@@ -1,10 +1,29 @@
-
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./globalstyles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from "./Component/Dashboard/Dashboard";
+import Pos from "./Component/POS/Pos";
+import NewSale from "./Component/NewSale/NewSale";
+import Nav from "./Component/Navbar/Nav";
+import AddProduct from "./Component/AddProduct/AddProduct";
+import SalesReport from "./Component/Sales Report/SalesReport";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+      <div className="body">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/Pos" element={<Pos />} />
+          <Route path="/newsale" element={<NewSale />} />
+          <Route path="/stock" element={<NewSale />} />
+          <Route path="/addproduct" element={<AddProduct/>}/>
+          <Route path="/salesreport" element={<SalesReport/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

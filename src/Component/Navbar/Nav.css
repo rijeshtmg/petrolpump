@@ -1,0 +1,8 @@
+.Nav.active {
+    color: blue;
+    font-weight: bold;
+  }
+
+  .nav-active{
+    color: red;
+  }
