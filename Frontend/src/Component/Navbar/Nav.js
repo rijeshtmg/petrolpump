@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Nav.css";
-import LoginSignup from "../Login/Loginsignup";
 
 export default function NavBar() {
   const [index, setIndex] = useState(0);

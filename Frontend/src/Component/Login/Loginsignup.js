@@ -35,9 +35,6 @@ const LoginSignup = ({ history, location }) => {
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
 
-  const [avatar, setAvatar] = useState("/profile.png");
-  const [avatarPreview, setAvatarPreview] = useState("/profile.png");
-
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -52,27 +49,14 @@ const LoginSignup = ({ history, location }) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("mobile", mobile);
-    myForm.set("avatar", avatar);
     dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
+    
       setUser({ ...user, [e.target.name]: e.target.value });
-    }
+    
   };
-
 
   useEffect(() => {
     if (error) {
@@ -140,7 +124,6 @@ const LoginSignup = ({ history, location }) => {
                 </div>
                 <Link to="/password/forgot">Forgot Password ?</Link>
                 <input type="submit" value="Login" className="loginBtn" />
-                
               </form>
 
               <form
@@ -153,7 +136,7 @@ const LoginSignup = ({ history, location }) => {
                   <FaceIcon />
                   <input
                     type="text"
-                    placeholder="Enter your Name"
+                    placeholder="Enter your Company Name"
                     required
                     name="name"
                     value={name}
@@ -171,6 +154,7 @@ const LoginSignup = ({ history, location }) => {
                     onChange={registerDataChange}
                   />
                 </div>
+
                 <div className="signUpmobile">
                   <Phone />
                   <input
@@ -204,16 +188,6 @@ const LoginSignup = ({ history, location }) => {
                     onChange={registerDataChange}
                   />
                 </div>
-
-                {/* <div id="registerImage">
-                  <img src={avatarPreview} alt="Avatar Preview" />
-                  <input
-                    type="file"
-                    name="avatar"
-                    accept="image/*"
-                    onChange={registerDataChange}
-                  />
-                </div> */}
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
             </div>
