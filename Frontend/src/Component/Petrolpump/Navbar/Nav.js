@@ -19,7 +19,7 @@ export default function NavBar() {
       <Container>
         <Navbar.Brand
           as={Link}
-          to="/"
+          to="/dashboard"
           style={{
             color: "#3B67FF",
             fontSize: 24,

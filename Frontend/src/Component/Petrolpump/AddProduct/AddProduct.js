@@ -1,8 +1,10 @@
 import React from "react";
 import "./AddProduct.css";
+import Nav from "../Navbar/Nav";
 const AddProduct = () => {
   return (
     <div className="addProduct">
+      <Nav/>
       <h1 className="addProduct-pageTitle">Add Product</h1>
       <div className="productDetails">
         <div className="productDetail">

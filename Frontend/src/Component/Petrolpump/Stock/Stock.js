@@ -1,27 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./ManageProduct.css";
-const ManageProduct = () => {
+import "./Stock.css";
+import Nav from "../Navbar/Nav";
+const Stock = () => {
   return (
     <>
-      <div className="manageProduct-head">
-        <h1 className="manageProduct-Title"> Product List</h1>
-        <Link to="/addproduct">
-          {" "}
-          <button className="addProductBtn">Add Product</button>
-        </Link>
-      </div>
-      <div className="productList">
+    <Nav/>
+      <h1 className="stockReport-Title"> Stock Report</h1>
+      <div className="stockList">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">S.N</th>
               <th scope="col">Product Name</th>
-              <th scope="col">Unit</th>
-              <th scope="col">Sale Price (Rs)</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Supplier Name</th>
               <th scope="col">Supplier Price (Rs)</th>
+              <th scope="col">Selling Price (Rs)</th>
+              <th scope="col">Stock</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -29,11 +22,9 @@ const ManageProduct = () => {
             <tr>
               <td>1001</td>
               <td>Petrol</td>
-              <td>Litre</td>
-              <td>180</td>
-              <td>18000</td>
-              <td>Nepal Oil Corporation</td>
               <td>178</td>
+              <td>180</td>
+              <td>20,000</td>
               <td>
                 <button className="removeBtn">x</button>
               </td>
@@ -41,11 +32,9 @@ const ManageProduct = () => {
             <tr>
               <td>1002</td>
               <td>Diesel</td>
-              <td>Litre</td>
-              <td>172</td>
-              <td>25555</td>
-              <td>Nepal Oil Corporation</td>
               <td>170</td>
+              <td>172</td>
+              <td>35,555</td>
               <td>
                 <button className="removeBtn">x</button>
               </td>
@@ -53,11 +42,9 @@ const ManageProduct = () => {
             <tr>
               <td>1003</td>
               <td>Kerosene</td>
-              <td>Litre</td>
-              <td>170</td>
-              <td>8000</td>
-              <td>Nepal Oil Corporation</td>
               <td>168</td>
+              <td>170</td>
+              <td>11,111</td>
               <td>
                 <button className="removeBtn">x</button>
               </td>
@@ -69,4 +56,4 @@ const ManageProduct = () => {
   );
 };
 
-export default ManageProduct;
+export default Stock;

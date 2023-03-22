@@ -2,23 +2,24 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./globalstyles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./Component/Dashboard/Dashboard";
-import Pos from "./Component/POS/Pos";
-import NewSale from "./Component/NewSale/NewSale";
-import Nav from "./Component/Navbar/Nav";
-import AddProduct from "./Component/AddProduct/AddProduct";
-import SalesReport from "./Component/Sales Report/SalesReport";
-import ManageProduct from "./Component/Manage Product/ManageProduct";
-import AddPurchase from "./Component/Add Purchase/AddPurchase";
-import PurchaseReport from "./Component/Purchase Report/PurchaseReport";
-import Stock from "./Component/Stock/Stock";
+import Dashboard from "./Component/Petrolpump/Dashboard/Dashboard";
+import Pos from "./Component/Petrolpump/POS/Pos";
+import NewSale from "./Component/Petrolpump/NewSale/NewSale";
+// import CNav from "./Component/Customer/CNav/CNav";
+import AddProduct from "./Component/Petrolpump/AddProduct/AddProduct";
+import SalesReport from "./Component/Petrolpump/Sales Report/SalesReport";
+import ManageProduct from "./Component/Petrolpump/Manage Product/ManageProduct";
+import AddPurchase from "./Component/Petrolpump/Add Purchase/AddPurchase";
+import PurchaseReport from "./Component/Petrolpump/Purchase Report/PurchaseReport";
+import Stock from "./Component/Petrolpump/Stock/Stock";
 import LoginSignup from "./Component/Login/Loginsignup";
+
 
 function App() {
   return (
     <BrowserRouter>
       <div className="body">
-        <Nav />
+        {/* <CNav/> */}
         <Routes>
           <Route exact path="/" element={<LoginSignup />} />
           <Route path="/dashboard" element={<Dashboard />} />

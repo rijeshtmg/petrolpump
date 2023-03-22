@@ -1,8 +1,10 @@
 import React from "react";
 import "./SalesReport.css";
+import Nav from "../Navbar/Nav";
 const SalesReport = () => {
   return (
     <>
+    <Nav/>
       <h1 className="salesReport-Title">Sales Report</h1>
       <div className="salesReport-dataSearches">
         <div className="salesReport-dataSearch">

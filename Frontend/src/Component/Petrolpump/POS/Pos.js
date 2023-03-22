@@ -1,9 +1,11 @@
 import React from 'react'
 import Combobox from "react-widgets/Combobox";
 import './Pos.css'
+import Nav from "../Navbar/Nav";
 const POS = () => {
   return (
     <div className="pos">
+      <Nav/>
       <h1 className="pos-pageTitle">New Sale</h1>
       <p className="selectProduct"> Select a product</p>
       <div className="pos-products">

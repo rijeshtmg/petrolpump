@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./NewSale.css";
+import Nav from "../Navbar/Nav";
 const NewSale = () => {
   const [paymentState, setPaymentState] = useState("");
   return (
+    
     <div className="newSale">
+      <Nav/>
       <h1 className="newSale-pageTitle">New Sale</h1>
       <p className="selectProduct"> Select a product</p>
       <div className="newSale-products">
@@ -105,3 +108,6 @@ const NewSale = () => {
 };
 
 export default NewSale;
+
+
+
