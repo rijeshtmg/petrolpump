@@ -13,7 +13,9 @@ import AddPurchase from "./Component/Petrolpump/Add Purchase/AddPurchase";
 import PurchaseReport from "./Component/Petrolpump/Purchase Report/PurchaseReport";
 import Stock from "./Component/Petrolpump/Stock/Stock";
 import LoginSignup from "./Component/Login/Loginsignup";
-
+import Home from "./Component/Customer/Home/Home";
+import Statement from "./Component/Customer/Statement/Statement";
+import Purchase from "./Component/Customer/Purchase/Purchase";
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
           <Route path="/manageproduct" element={<ManageProduct />} />
           <Route path="/addpurchase" element={<AddPurchase />} />
           <Route path="/purchasereport" element={<PurchaseReport />} />
+          <Route path="/userHome" element={<Home />} />
+          <Route path="/statement" element={<Statement />} />
+          <Route path="/purchase" element={<Purchase />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import './CNav'
+import "./CNav";
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
@@ -29,19 +29,19 @@ export default function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="justify-content-center flex-grow-1 pe-3 gap-3">
+          <Nav className="justify-content-center flex-grow-1 pe-3 gap-5">
             <Nav.Link
               className={index === 0 ? "nav-active" : "nav-item"}
               onClick={() => setIndex(0)}
               as={Link}
-              to="/dashboard"
+              to="/userHome"
             >
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/stock">
+            <Nav.Link as={Link} to="/purchase">
               Purchase
             </Nav.Link>
-            <Nav.Link as={Link} to="/stock">
+            <Nav.Link as={Link} to="/statement">
               Statement
             </Nav.Link>
           </Nav>
