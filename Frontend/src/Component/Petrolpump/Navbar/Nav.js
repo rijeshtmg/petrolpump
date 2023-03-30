@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
@@ -83,15 +84,36 @@ export default function NavBar() {
               Stock
             </Nav.Link>
           </Nav>
-          <Button as={Link} to="/pos" variant="primary" id="button-addon2">
+          <Button
+            as={Link}
+            to="/pos"
+            variant="primary"
+            id="button-addon2"
+            className="Button"
+          >
             POS
           </Button>
-          <img
+          <NavDropdown
+            className={index === 3 ? "nav-active" : "nav-item"}
+            profile
+            onClick={() => setIndex(3)}
+            title={<AccountCircleIcon />}
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item as={Link} to="/profile">
+              Profile
+            </NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/">
+              Log Out
+            </NavDropdown.Item>
+          </NavDropdown>
+
+          {/* <img
             className="rounded-circle justify-content-center ms-5"
             style={{ height: 40, weight: 40 }}
             src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
             alt="Avatar"
-          />
+          /> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

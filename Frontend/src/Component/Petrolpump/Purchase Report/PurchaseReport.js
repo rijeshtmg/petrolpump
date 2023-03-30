@@ -1,10 +1,91 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { DataGrid } from "@material-ui/data-grid";
+import { useSelector, useDispatch } from "react-redux";
+import { clearErrors, getAdminPurchase } from "../../../actions/PurchaseAction";
+import { ToastContainer } from "react-toastify";
+import "../Manage Product/ManageProduct";
 import "./PurchaseReport.css";
-import Nav from "../Navbar/Nav";
+import NavBar from "../Navbar/Nav";
 const PurchaseReport = () => {
+  const dispatch = useDispatch();
+
+  const { error, purchases } = useSelector((state) => state.purchases);
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+
+    dispatch(getAdminPurchase());
+  }, [dispatch, error]);
+
+  const columns = [
+    { field: "sn", headerName: "S.N", minWidth: 20, flex: 0.4 },
+
+    {
+      field: "name",
+      headerName: "Product Name",
+      minWidth: 100,
+      flex: 0.7,
+    },
+    {
+      field: "supplier",
+      headerName: "Supplier",
+      type: "string",
+      minWidth: 90,
+      flex: 0.6,
+    },
+
+    {
+      field: "supprice",
+      headerName: "Price",
+      type: "string",
+      minWidth: 150,
+      flex: 0.5,
+    },
+    {
+      field: "stock",
+      headerName: "Stock ",
+      type: "string",
+      minWidth: 150,
+      flex: 0.5,
+    },
+    {
+      field: "totalamount",
+      headerName: "Total Amount",
+      type: "string",
+      minWidth: 80,
+      flex: 0.7,
+    },
+    {
+      field: "createAt",
+      headerName: "Purchase Date",
+      type: "date",
+      minWidth: 100,
+      flex: 0.7,
+    },
+  ];
+
+  const rows = [];
+
+  purchases &&
+    purchases.forEach((item) => {
+      rows.push({
+        id: item._id,
+        sn: item.sn,
+        supplier: item.supplier,
+        supprice: item.supprice,
+        stock: item.stock,
+        totalamount: item.totalamount,
+        name: item.name,
+        createAt: item.createAt,
+      });
+    });
+
   return (
     <>
-    <Nav/>
+      <NavBar />
       <h1 className="purchaseReport-Title"> Purchase Report</h1>
       <div className="purchaseReport-dataSearch">
         <div className="purchaseReport-data">
@@ -15,68 +96,29 @@ const PurchaseReport = () => {
         </div>
         <button className="searchBtn">Search</button>
       </div>
-      <div className="purchaseList">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">S.N</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Supplier Name</th>
-              <th scope="col">Supplier Price (Rs)</th>
-              <th scope="col">Stock</th>
-              <th scope="col">Total Amount</th>
-              <th scope="col">Purchase Date</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1001</td>
-              <td>Diesel</td>
-              <td>Nepal Oil Corporation</td>
-              <td>170</td>
-              <td>20000</td>
-              <td>200000</td>
-              <td>08-03-2023</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1002</td>
-              <td>Kerosene</td>
-              <td>Nepal Oil Corporation</td>
-              <td>170</td>
-              <td>15000</td>
-              <td>170000</td>
-              <td>08-03-2023</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1003</td>
-              <td>Petrol</td>
-              <td>Nepal Oil Corporation</td>
-              <td>180</td>
-              <td>18000</td>
-              <td>178000</td>
-              <td>08-03-2023</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td style={{ fontWeight: 600 }}> Total Amount (Rs):</td>
-              <td>11,12,000</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="dashboard">
+        <div className="productListContainer">
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            className="productListTable"
+            autoHeight
+          />
+        </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

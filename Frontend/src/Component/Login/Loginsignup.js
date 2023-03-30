@@ -9,10 +9,9 @@ import Loader from "../../more/Loader";
 import { clearErrors, login, register } from "../../actions/userAction";
 import MetaData from "../../more/Metadata";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Phone } from "@material-ui/icons";
 
-const LoginSignup = ({ history, location }) => {
+const LoginSignup = ({ location, history }) => {
   const dispatch = useDispatch();
 
   const { error, loading, isAuthenticated } = useSelector(
@@ -53,10 +52,9 @@ const LoginSignup = ({ history, location }) => {
   };
 
   const registerDataChange = (e) => {
-    
-      setUser({ ...user, [e.target.name]: e.target.value });
-    
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
+
 
   useEffect(() => {
     if (error) {
@@ -65,9 +63,9 @@ const LoginSignup = ({ history, location }) => {
     }
 
     if (isAuthenticated) {
-      history.push("/");
+      history.push("/dashboard");
     }
-  }, [dispatch, error, history, isAuthenticated]);
+  }, [dispatch, error, isAuthenticated, history]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -102,7 +100,7 @@ const LoginSignup = ({ history, location }) => {
                 <button ref={switcherTab}></button>
               </div>
               <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
-                <div className="loginEmail">
+                <div className="email">
                   <MailOutlineIcon />
                   <input
                     type="email"

@@ -1,16 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./NewSale.css";
+import { useSelector, useDispatch } from "react-redux";
+import { getProduct } from "../../../actions/ProductActions";
 import Nav from "../Navbar/Nav";
-const NewSale = () => {
+import ProductCard from "../ProductCard/ProductCard";
+const NewSale = ({ match }) => {
+  const dispatch = useDispatch();
+
+  const { products, error } = useSelector((state) => state.products);
+
+  const keyword = match.params.keyword;
+
+  useEffect(() => {
+    dispatch(getProduct(keyword));
+  }, [dispatch, keyword, error]);
+
   const [paymentState, setPaymentState] = useState("");
   return (
-    
     <div className="newSale">
-      <Nav/>
+      <Nav />
       <h1 className="newSale-pageTitle">New Sale</h1>
       <p className="selectProduct"> Select a product</p>
       <div className="newSale-products">
-        <div className="newSale-product">
+        <div
+          className="products"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            flex: ".9",
+          }}
+        >
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+        {/* <div className="newSale-product">
           <h5>Petrol</h5> <p>Rs 182/Ltr</p>{" "}
         </div>
         <div className="newSale-product">
@@ -18,7 +44,7 @@ const NewSale = () => {
         </div>
         <div className="newSale-product">
           <h5>Kerosene</h5> <p>Rs 170/Ltr</p>{" "}
-        </div>
+        </div> */}
       </div>
       <div className="newSale-details">
         <div className="newSale-detail">
@@ -60,21 +86,27 @@ const NewSale = () => {
               <td>10</td>
               <td>180</td>
               <td>1800</td>
-              <td><button className="removeBtn">x</button></td>
+              <td>
+                <button className="removeBtn">x</button>
+              </td>
             </tr>
             <tr>
               <td>Petrol</td>
               <td>10</td>
               <td>180</td>
               <td>1800</td>
-              <td><button className="removeBtn">x</button></td>
+              <td>
+                <button className="removeBtn">x</button>
+              </td>
             </tr>
             <tr>
               <td>Petrol</td>
               <td>10</td>
               <td>180</td>
               <td>1800</td>
-              <td><button className="removeBtn">x</button></td>
+              <td>
+                <button className="removeBtn">x</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -108,6 +140,3 @@ const NewSale = () => {
 };
 
 export default NewSale;
-
-
-
