@@ -22,6 +22,7 @@ const AddProduct = () => {
   const [supplier, setSupplier] = useState("");
   const [saleprice, setSaleprice] = useState(0);
   const [unit, setUnit] = useState("");
+  const [stock, setStock] = useState(0);
 
   useEffect(() => {
     if (error) {
@@ -34,7 +35,7 @@ const AddProduct = () => {
       history.push("/manageproduct");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, error, success,history]);
+  }, [dispatch, error, success, history]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -47,6 +48,7 @@ const AddProduct = () => {
     myForm.set("supprice", supprice);
     myForm.set("saleprice", saleprice);
     myForm.set("unit", unit);
+    myForm.set("stock", stock);
 
     dispatch(createProduct(myForm));
   };
@@ -130,6 +132,19 @@ const AddProduct = () => {
                   required
                   value={saleprice}
                   onChange={(e) => setSaleprice(e.target.value)}
+                />{" "}
+              </div>
+            </div>
+            <div className="productDetail">
+              <div className="product-Data" style={{ width: "390px" }}>
+                <h1>
+                  Stock <span style={{ color: "red" }}>*</span> :
+                </h1>{" "}
+                <input
+                  type="number"
+                  required
+                  value={stock}
+                  onChange={(e) => setStock(e.target.value)}
                 />{" "}
               </div>
             </div>

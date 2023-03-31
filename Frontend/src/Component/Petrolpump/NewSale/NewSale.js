@@ -11,6 +11,10 @@ const NewSale = ({ match }) => {
 
   const keyword = match.params.keyword;
 
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
+
   useEffect(() => {
     dispatch(getProduct(keyword));
   }, [dispatch, keyword, error]);
@@ -22,29 +26,12 @@ const NewSale = ({ match }) => {
       <h1 className="newSale-pageTitle">New Sale</h1>
       <p className="selectProduct"> Select a product</p>
       <div className="newSale-products">
-        <div
-          className="products"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            flex: ".9",
-          }}
-        >
+        <div className="products">
           {products &&
             products.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard onClick={() => handleProductClick(product)} key={product.id} product={product} />
             ))}
         </div>
-        {/* <div className="newSale-product">
-          <h5>Petrol</h5> <p>Rs 182/Ltr</p>{" "}
-        </div>
-        <div className="newSale-product">
-          <h5>Diesel</h5> <p>Rs 170/Ltr</p>{" "}
-        </div>
-        <div className="newSale-product">
-          <h5>Kerosene</h5> <p>Rs 170/Ltr</p>{" "}
-        </div> */}
       </div>
       <div className="newSale-details">
         <div className="newSale-detail">

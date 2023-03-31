@@ -30,7 +30,11 @@
     gap: 4rem;
 }
 
-
+.products{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
 
 .newSale-details{
 

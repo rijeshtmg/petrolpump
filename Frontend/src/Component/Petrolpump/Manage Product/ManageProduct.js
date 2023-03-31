@@ -1,28 +1,53 @@
 import React, { Fragment, useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getAdminProduct } from "../../../actions/ProductActions";
+import {
+  clearErrors,
+  getAdminProduct,
+  deleteProduct,
+} from "../../../actions/ProductActions";
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Button } from "@material-ui/core";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { DELETE_PRODUCT_RESET } from "../../../constans/ProductConstans";
 import "./ManageProduct.css";
 import NavBar from "../Navbar/Nav";
 
-const ManageProduct = () => {
+const ManageProduct = ({ history }) => {
   const dispatch = useDispatch();
 
   const { error, products } = useSelector((state) => state.products);
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.deleteProduct
+  );
+
+  const deleteProductHandler = (id) => {
+    dispatch(deleteProduct(id));
+  };
 
   useEffect(() => {
     if (error) {
       alert(error);
       dispatch(clearErrors());
     }
+    if (deleteError) {
+      toast.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      toast.success("Product Deleted Successfully");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
 
     dispatch(getAdminProduct());
-  }, [dispatch, error ]);
+  }, [dispatch, error,isDeleted,deleteError, history]);
 
   const columns = [
-    { field: "sn", headerName: "S.N", minWidth: 50, flex: 0.4 },
+    { field: "sn", headerName: "S.N", minWidth: 50, flex: 0.35 },
 
     {
       field: "name",
@@ -40,10 +65,10 @@ const ManageProduct = () => {
 
     {
       field: "supprice",
-      headerName: "Suplier price",
+      headerName: "Supplier price",
       type: "string",
       minWidth: 150,
-      flex: 0.5,
+      flex: 0.45,
     },
     {
       field: "saleprice",
@@ -57,7 +82,32 @@ const ManageProduct = () => {
       headerName: "Unit",
       type: "string",
       minWidth: 100,
-      flex: 0.5,
+      flex: 0.4,
+    },
+    {
+      field: "actions",
+      flex: 0.3,
+      headerName: "Actions",
+      minWidth: 150,
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <Fragment>
+            <Link to={`/edit/product/${params.getValue(params.id, "id")}`}>
+              <EditIcon />
+            </Link>
+
+            <Button
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
+            >
+              <DeleteIcon />
+            </Button>
+          </Fragment>
+        );
+      },
     },
   ];
 

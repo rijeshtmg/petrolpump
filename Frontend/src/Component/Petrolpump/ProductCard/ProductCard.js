@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./Productcard.css";
 
 const ProductCard = ({ product }) => {
   return (
     <>
-      <Link className="ProductCard" to={`/product/${product._id}`}>
-        <p className="productName">{product.name}</p>
+      <div className="ProductCard">
+        <p className="productName" >{product.name}</p>
         <div>
-          <div className="offerPriceBox">
-            <span className="p__Price">{`Rs.${product.saleprice}/Ltr`}</span>
+          <div className="price">
+            <span className="s__Price">{`Rs.${product.saleprice}/Ltr`}</span>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

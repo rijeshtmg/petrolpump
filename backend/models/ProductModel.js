@@ -11,6 +11,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter a name of a product"],
     trim: true,
+    unique: true,
     maxLength: [20, "Product name not exceed than 20 characters"],
   },
   supplier: {
@@ -30,6 +31,10 @@ const productSchema = new mongoose.Schema({
   },
   unit: {
     type: String,
+    required: true,
+  },
+  stock: {
+    type: Number,
     required: true,
   },
   user: {
