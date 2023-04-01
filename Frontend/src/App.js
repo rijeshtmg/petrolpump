@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./globalstyles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Component/Petrolpump/Dashboard/Dashboard";
@@ -18,6 +18,9 @@ import Statement from "./Component/Customer/Statement/Statement";
 import Purchase from "./Component/Customer/Purchase/Purchase";
 import Profile from "./Component/Petrolpump/Profile/Profile";
 import AllUsers from "./Component/Admin/AllUser/Alluser";
+import ProtectedRoute from "./Route/ProtectedRoute";
+import PumpCard from "./Component/Customer/Home/PumpCard";
+import EditProfile from "./Component/Petrolpump/Profile/EditProfile";
 
 function App() {
   return (
@@ -25,20 +28,68 @@ function App() {
       <div className="body">
         <Switch>
           <Route exact path="/" component={LoginSignup} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/Pos" component={Pos} />
-          <Route exact path="/newsale" component={NewSale} />
-          <Route exact path="/stock" component={Stock} />
-          <Route exact path="/addproduct" component={AddProduct} />
-          <Route exact path="/salesreport" component={SalesReport} />
-          <Route exact path="/manageproduct" component={ManageProduct} />
-          <Route exact path="/addpurchase" component={AddPurchase} />
-          <Route exact path="/purchasereport" component={PurchaseReport} />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/dashboard"
+            component={Dashboard}
+          />
+          <ProtectedRoute isAdmin={true} exact path="/Pos" component={Pos} />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/newsale"
+            component={NewSale}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/stock"
+            component={Stock}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/addproduct"
+            component={AddProduct}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/salesreport"
+            component={SalesReport}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/manageproduct"
+            component={ManageProduct}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/addpurchase"
+            component={AddPurchase}
+          />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/purchasereport"
+            component={PurchaseReport}
+          />
           <Route exact path="/userHome" component={Home} />
           <Route exact path="/statement" component={Statement} />
-          <Route exact path="/users" component={AllUsers} />
+          <ProtectedRoute
+            isAdmin={true}
+            exact
+            path="/users"
+            component={AllUsers}
+          />
           <Route exact path="/purchase" component={Purchase} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/pump" component={PumpCard} />
+
+          <ProtectedRoute exact path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/editprofile" component={EditProfile}/>
         </Switch>
       </div>
     </Router>

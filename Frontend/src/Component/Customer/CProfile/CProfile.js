@@ -5,7 +5,7 @@ import "./profile.css";
 import { logout } from "../../../actions/userAction";
 import { toast } from "react-toastify";
 
-const Profile = ({ history }) => {
+const CProfile = ({ history }) => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -99,4 +99,4 @@ const Profile = ({ history }) => {
   );
 };
 
-export default Profile;
+export default CProfile;

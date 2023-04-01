@@ -55,7 +55,6 @@ const LoginSignup = ({ location, history }) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-
   useEffect(() => {
     if (error) {
       toast.error(error);

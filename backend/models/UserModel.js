@@ -28,6 +28,14 @@ const userSchema = new mongoose.Schema({
     minlength: [8, "Password should be greater than 8 characters"],
     select: false,
   },
+  address: {
+    type: String,
+    minlength: [100],
+  },
+  description: {
+    type: String,
+    minlength: [200],
+  },
 
   avatar: {
     required: [false, "Please choose Profile avatar"],

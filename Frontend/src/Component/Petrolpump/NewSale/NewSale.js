@@ -11,9 +11,7 @@ const NewSale = ({ match }) => {
 
   const keyword = match.params.keyword;
 
-  const handleProductClick = (product) => {
-    setSelectedProduct(product);
-  };
+  
 
   useEffect(() => {
     dispatch(getProduct(keyword));
@@ -29,7 +27,7 @@ const NewSale = ({ match }) => {
         <div className="products">
           {products &&
             products.map((product) => (
-              <ProductCard onClick={() => handleProductClick(product)} key={product.id} product={product} />
+              <ProductCard  key={product.id} product={product} />
             ))}
         </div>
       </div>
