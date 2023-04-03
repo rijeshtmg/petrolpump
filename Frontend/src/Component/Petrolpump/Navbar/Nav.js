@@ -99,11 +99,11 @@ export default function NavBar() {
               variant="primary"
               id="button-addon2"
               className="Button"
+              style={{ marginRight: "20px" }}
             >
               POS
             </Button>
             <NavDropdown
-              className={index === 3 ? "nav-active" : "nav-item"}
               profile
               onClick={() => setIndex(3)}
               title={<AccountCircleIcon />}

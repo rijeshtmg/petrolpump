@@ -61,10 +61,16 @@ const LoginSignup = ({ location, history }) => {
       dispatch(clearErrors());
     }
 
+    // if (isAuthenticated && user?.role === "user") {
+    //   history.push("/userHome");
+    // }
     if (isAuthenticated) {
       history.push("/dashboard");
     }
-  }, [dispatch, error, isAuthenticated, history]);
+    //if (isAuthenticated && user?.role == "user") {
+      //history.push("/userHome");
+    //}
+  }, [dispatch, error, isAuthenticated, history,user?.role]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {
@@ -133,7 +139,7 @@ const LoginSignup = ({ location, history }) => {
                   <FaceIcon />
                   <input
                     type="text"
-                    placeholder="Enter your Company Name"
+                    placeholder="Enter your Name"
                     required
                     name="name"
                     value={name}

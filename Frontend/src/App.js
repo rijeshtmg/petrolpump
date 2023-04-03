@@ -20,8 +20,8 @@ import Profile from "./Component/Petrolpump/Profile/Profile";
 import AllUsers from "./Component/Admin/AllUser/Alluser";
 import ProtectedRoute from "./Route/ProtectedRoute";
 import PumpCard from "./Component/Customer/Home/PumpCard";
-import EditProfile from "./Component/Petrolpump/Profile/EditProfile";
-
+import EditProfile from "./Component/Petrolpump/Edit Profile/EditProfile";
+import CProfile from "./Component/Customer/CProfile/CProfile";
 function App() {
   return (
     <Router>
@@ -80,7 +80,7 @@ function App() {
           <Route exact path="/userHome" component={Home} />
           <Route exact path="/statement" component={Statement} />
           <ProtectedRoute
-            isAdmin={true}
+            // isAdmin={true}
             exact
             path="/users"
             component={AllUsers}
@@ -90,6 +90,7 @@ function App() {
 
           <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/editprofile" component={EditProfile}/>
+          <ProtectedRoute exact path="/cprofile" component={CProfile}/>
         </Switch>
       </div>
     </Router>

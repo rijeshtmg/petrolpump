@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 import MetaData from "../../../more/Metadata";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-
+import ANavbar from "../ANav/ANavbar";
 import {
   getAllUsers,
   clearErrors,
@@ -103,6 +103,7 @@ const AllUsers = ({ history }) => {
 
   return (
     <Fragment>
+      <ANavbar/>
       <MetaData title={`ALL USERS - Admin`} />
 
       <div className="dashboard">

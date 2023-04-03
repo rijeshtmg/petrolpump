@@ -8,10 +8,9 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "../../../actions/userAction";
 import { NavDropdown } from "react-bootstrap";
-import "./CNav";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function ANavbar() {
   const dispatch = useDispatch();
   function logoutUser() {
     dispatch(logout());
@@ -24,7 +23,12 @@ export default function NavBar() {
   }
   return (
     <>
-      <Navbar bg="white" expand="lg" className="m-2 Navbar">
+      <Navbar
+        bg="white"
+        expand="lg"
+        className="m-2 Navbar"
+        style={{ borderBottom: "0.75px solid #E4E4E4" }}
+      >
         <Container>
           <Navbar.Brand
             as={Link}

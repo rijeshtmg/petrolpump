@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import "./profile.css";
+import "./CProfile.css";
 import { logout } from "../../../actions/userAction";
 import { toast } from "react-toastify";
 
@@ -51,7 +51,11 @@ const CProfile = ({ history }) => {
             <Link
               to="/editprofile"
               className="edit__profile"
-              style={{ margin: "10px 0 0 -70px", color: "#3B67FF" }}
+              style={{
+                margin: "10px 0 0 -70px",
+                color: "#3B67FF",
+                textDecoration: "none",
+              }}
             >
               Edit Profile
             </Link>
