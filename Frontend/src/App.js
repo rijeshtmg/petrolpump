@@ -16,12 +16,13 @@ import LoginSignup from "./Component/Login/Loginsignup";
 import Home from "./Component/Customer/Home/Home";
 import Statement from "./Component/Customer/Statement/Statement";
 import Purchase from "./Component/Customer/Purchase/Purchase";
-import Profile from "./Component/Petrolpump/Profile/Profile";
+import Profile from "./Component/Profile/Profile";
 import AllUsers from "./Component/Admin/AllUser/Alluser";
 import ProtectedRoute from "./Route/ProtectedRoute";
 import PumpCard from "./Component/Customer/Home/PumpCard";
-import EditProfile from "./Component/Petrolpump/Edit Profile/EditProfile";
-import CProfile from "./Component/Customer/CProfile/CProfile";
+import EditProfile from "./Component/Edit Profile/EditProfile";
+
+import ChangePassword from "./Component/Change Password/ChangePassword";
 function App() {
   return (
     <Router>
@@ -79,8 +80,8 @@ function App() {
           />
           <Route exact path="/userHome" component={Home} />
           <Route exact path="/statement" component={Statement} />
-          <ProtectedRoute
-            // isAdmin={true}
+          <Route
+            //isAdmin={true}
             exact
             path="/users"
             component={AllUsers}
@@ -89,8 +90,9 @@ function App() {
           <Route exact path="/pump" component={PumpCard} />
 
           <ProtectedRoute exact path="/profile" component={Profile} />
-          <ProtectedRoute exact path="/editprofile" component={EditProfile}/>
-          <ProtectedRoute exact path="/cprofile" component={CProfile}/>
+          <ProtectedRoute exact path="/editprofile" component={EditProfile} />
+
+          <Route exact path="/changepassword" component={ChangePassword} />
         </Switch>
       </div>
     </Router>

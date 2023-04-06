@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import "./CProfile.css";
-import { logout } from "../../../actions/userAction";
+import "./Profile.css";
+import { logout } from "../../actions/userAction";
 import { toast } from "react-toastify";
 
-const CProfile = ({ history }) => {
+const Profile = ({ history }) => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isAuthenticated === false) {
-      history.push("/login");
+      history.push("/");
     }
   }, [history, isAuthenticated]);
 
@@ -89,7 +89,7 @@ const CProfile = ({ history }) => {
             </div>
 
             <div className="change__info">
-              <Link to="/me/update" className="settings">
+              <Link to="/changepassword" className="settings">
                 Change Password
               </Link>
               <button onClick={logoutUser} className="buttonlg">
@@ -103,4 +103,4 @@ const CProfile = ({ history }) => {
   );
 };
 
-export default CProfile;
+export default Profile;

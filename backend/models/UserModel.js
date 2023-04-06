@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
   },
 
   avatar: {
-    required: [false, "Please choose Profile avatar"],
+    //required: [false, "Please choose Profile avatar"],
     public_id: {
       type: String,
     },

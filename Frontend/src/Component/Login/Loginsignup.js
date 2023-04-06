@@ -36,7 +36,9 @@ const LoginSignup = ({ location, history }) => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
+    console.log("demos")
     dispatch(login(loginEmail, loginPassword));
+    console.log(user);
   };
 
   const registerSubmit = (e) => {
@@ -54,23 +56,6 @@ const LoginSignup = ({ location, history }) => {
   const registerDataChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch(clearErrors());
-    }
-
-    // if (isAuthenticated && user?.role === "user") {
-    //   history.push("/userHome");
-    // }
-    if (isAuthenticated) {
-      history.push("/dashboard");
-    }
-    //if (isAuthenticated && user?.role == "user") {
-      //history.push("/userHome");
-    //}
-  }, [dispatch, error, isAuthenticated, history,user?.role]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

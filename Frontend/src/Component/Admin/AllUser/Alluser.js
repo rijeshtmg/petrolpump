@@ -103,13 +103,13 @@ const AllUsers = ({ history }) => {
 
   return (
     <Fragment>
-      <ANavbar/>
+      <ANavbar />
       <MetaData title={`ALL USERS - Admin`} />
-
+      <h1 id="productListHeading" className="listHeading">
+        All Users
+      </h1>
       <div className="dashboard">
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL USERS</h1>
-
           <DataGrid
             rows={rows}
             columns={columns}

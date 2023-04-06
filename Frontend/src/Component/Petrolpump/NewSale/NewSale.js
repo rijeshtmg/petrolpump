@@ -5,17 +5,30 @@ import { getProduct } from "../../../actions/ProductActions";
 import Nav from "../Navbar/Nav";
 import ProductCard from "../ProductCard/ProductCard";
 const NewSale = ({ match }) => {
+  const [data, setData] = useState({
+    name: "",
+    quantity: 0,
+  });
+  const [price, setPrice] = useState(0);
+  const [type, setType] = useState({});
+
+  const handleChange = (type) => (e) => {
+    setData({ ...data, [type]: e.target.value });
+  };
   const dispatch = useDispatch();
 
   const { products, error } = useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
 
-  
-
   useEffect(() => {
     dispatch(getProduct(keyword));
   }, [dispatch, keyword, error]);
+
+  useEffect(() => {
+    let temp = (type?.saleprice || 0) * (data.quantity || 0);
+    setPrice(temp);
+  }, [data.quantity, type]);
 
   const [paymentState, setPaymentState] = useState("");
   return (
@@ -27,22 +40,36 @@ const NewSale = ({ match }) => {
         <div className="products">
           {products &&
             products.map((product) => (
-              <ProductCard  key={product.id} product={product} />
+              <ProductCard
+                type={type}
+                key={product.id}
+                product={product}
+                setType={setType}
+              />
             ))}
         </div>
       </div>
       <div className="newSale-details">
         <div className="newSale-detail">
           <div className="newSale-data newSale-data-Customer">
-            <h1>Customer Name:</h1> <input />{" "}
+            <h1>Customer Name:</h1>{" "}
+            <input onChange={handleChange("name")} value={data.name} />
           </div>
         </div>
         <div className="newSale-detail">
           <div className="newSale-data">
-            <h1>Quantity in Ltr:</h1> <input />{" "}
+            <h1>Quantity in Ltr:</h1>{" "}
+            <input
+              onChange={handleChange("quantity")}
+              value={data.quantity}
+              type="number"
+            />
           </div>
           <div className="newSale-data">
-            <h1>Amount:</h1> <input />{" "}
+            <h1>Amount:</h1> <input placeholder={price} readOnly />
+          </div>
+          <div>
+            <button>Submit</button>
           </div>
         </div>
       </div>
@@ -65,34 +92,20 @@ const NewSale = ({ match }) => {
               <th scope="col">Action</th>
             </tr>
           </thead>
+
           <tbody>
-            <tr>
-              <td>Petrol</td>
-              <td>10</td>
-              <td>180</td>
-              <td>1800</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Petrol</td>
-              <td>10</td>
-              <td>180</td>
-              <td>1800</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
-            <tr>
-              <td>Petrol</td>
-              <td>10</td>
-              <td>180</td>
-              <td>1800</td>
-              <td>
-                <button className="removeBtn">x</button>
-              </td>
-            </tr>
+            {products &&
+              products.map((product, index) => (
+                <tr key={index}>
+                  <td>{product.name}</td>
+                  <td>10</td>
+                  <td>{product.saleprice}</td>
+                  <td>{product.saleprice * 10}</td>
+                  <td>
+                    <button className="removeBtn">x</button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
         <div className="billBtn">

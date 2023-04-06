@@ -32,7 +32,7 @@ export default function ANavbar() {
         <Container>
           <Navbar.Brand
             as={Link}
-            to="/dashboard"
+            to="/users"
             style={{
               color: "#3B67FF",
               fontSize: 24,
@@ -44,20 +44,17 @@ export default function ANavbar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="justify-content-center flex-grow-1 pe-3 gap-5">
+            <Nav className="justify-content-center flex-grow-1 pe-3 gap-3">
               <Nav.Link
                 className={index === 0 ? "nav-active" : "nav-item"}
                 onClick={() => setIndex(0)}
                 as={Link}
-                to="/userHome"
+                to="/users"
               >
-                Home
+                All Users
               </Nav.Link>
-              <Nav.Link as={Link} to="/purchase">
-                Purchase
-              </Nav.Link>
-              <Nav.Link as={Link} to="/statement">
-                Statement
+              <Nav.Link as={Link} to="/confirmproduct">
+               Confirm Product
               </Nav.Link>
             </Nav>
             <NavDropdown
@@ -67,7 +64,7 @@ export default function ANavbar() {
               title={<AccountCircleIcon />}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item as={Link} to="/cprofile">
+              <NavDropdown.Item as={Link} to="/profile">
                 Profile
               </NavDropdown.Item>
               <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>

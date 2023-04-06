@@ -3,7 +3,7 @@ import "./DProductCard.css";
 const DProductCard = ({ product }) => {
   return (
     <>
-      <div className="ProductCard">
+      <div className="DProductCard">
         <p className="productName">{product.name}</p>
         <div className="stock">{`Stock: ${product.stock}`}</div>
         <div>

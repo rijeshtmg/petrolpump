@@ -28,7 +28,7 @@ export default function NavBar() {
         <Container>
           <Navbar.Brand
             as={Link}
-            to="/dashboard"
+            to="/userHome"
             style={{
               color: "#3B67FF",
               fontSize: 24,
@@ -63,7 +63,7 @@ export default function NavBar() {
               title={<AccountCircleIcon />}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item as={Link} to="/cprofile">
+              <NavDropdown.Item as={Link} to="/profile">
                 Profile
               </NavDropdown.Item>
               <NavDropdown.Item onClick={logoutUser}>Log Out</NavDropdown.Item>

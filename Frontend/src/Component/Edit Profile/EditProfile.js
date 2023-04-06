@@ -9,8 +9,8 @@ import {
   clearErrors,
   loadUser,
   updateProfile,
-} from "../../../actions/userAction";
-import { UPDATE_PROFILE_RESET } from "../../../constans/userContans";
+} from "../../actions/userAction";
+import { UPDATE_PROFILE_RESET } from "../../constans/userContans";
 import { ToastContainer, toast } from "react-toastify";
 
 const EditProfile = ({ history }) => {

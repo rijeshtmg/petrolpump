@@ -9,7 +9,7 @@ const cloudinary = require("cloudinary");
 // Register user
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
   try {
-    const { name, email, password, mobile, avatar } = req.body;
+    const { name, email, password, mobile } = req.body;
 
     let user = await User.findOne({ email });
     if (user) {
@@ -18,16 +18,16 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
         .json({ success: false, message: "User already exists" });
     }
 
-    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
-      folder: "avatars",
-    });
+    // const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+    //   folder: "avatars",
+    // });
 
     user = await User.create({
       name,
       email,
       mobile,
       password,
-      avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
+     // avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
     });
     
     sendToken(user, 201, res);
